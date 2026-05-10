@@ -1,0 +1,13 @@
+* {
+  caret-color: transparent !important;
+}
+
+*::before,
+*::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+[aria-busy='true'] {
+  animation: none !important;
+}

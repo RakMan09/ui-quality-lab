@@ -1,0 +1,73 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: rgba(12, 20, 38, 0.58);
+  backdrop-filter: blur(1.5px);
+  z-index: 20;
+}
+
+.modal {
+  width: min(100%, 38rem);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-elevated);
+  padding: var(--space-6);
+  display: grid;
+  gap: var(--space-5);
+  box-shadow: 0 24px 40px -22px var(--color-shadow);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-xl);
+  line-height: var(--line-tight);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.content {
+  color: var(--color-text-secondary);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.confirmation {
+  border-color: var(--color-success);
+}
+
+.destructive {
+  border-color: var(--color-danger);
+}
+
+.mobileLayout {
+  align-self: end;
+  width: 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+@media (max-width: 640px) {
+  .modal {
+    width: 100%;
+    padding: var(--space-5);
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+}

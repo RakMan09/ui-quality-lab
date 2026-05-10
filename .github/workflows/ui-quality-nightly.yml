@@ -1,0 +1,70 @@
+name: UI Quality Nightly
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ui-quality-nightly-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nightly-quality:
+    runs-on: macos-latest
+    env:
+      CI: 'true'
+      PW_CROSS_BROWSER_SMOKE: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium firefox webkit
+
+      - name: Run Chromium E2E + smoke
+        run: pnpm test:e2e && pnpm test:smoke
+
+      - name: Run Firefox smoke
+        run: pnpm exec playwright test tests/smoke --project=firefox-smoke
+
+      - name: Run WebKit smoke
+        run: pnpm exec playwright test tests/smoke --project=webkit-smoke
+
+      - name: Run visual regression
+        run: pnpm test:visual
+
+      - name: Run accessibility checks
+        run: pnpm test:a11y
+
+      - name: Build app
+        run: pnpm build
+
+      - name: Run Lighthouse CI
+        run: pnpm lhci
+
+      - name: Upload nightly artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-quality-artifacts
+          path: |
+            playwright-report
+            test-results
+            .lighthouseci
+          if-no-files-found: ignore

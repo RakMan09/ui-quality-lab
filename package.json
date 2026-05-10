@@ -1,0 +1,53 @@
+{
+  "name": "ui-quality-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm typecheck && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
+    "format": "prettier --write .",
+    "test": "playwright test --project=chromium",
+    "test:e2e": "playwright test tests/e2e --project=chromium",
+    "test:smoke": "playwright test tests/smoke --project=chromium",
+    "test:visual": "playwright test tests/visual --project=chromium",
+    "test:visual:update": "playwright test tests/visual --project=chromium --update-snapshots",
+    "test:a11y": "playwright test tests/a11y --project=chromium",
+    "lhci": "lhci autorun --config=tests/perf/lighthouserc.cjs",
+    "test:perf": "pnpm build && pnpm lhci",
+    "playwright:report": "playwright show-report playwright-report/html"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
+    "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.59.1",
+    "@storybook/addon-a11y": "^10.3.6",
+    "@storybook/addon-docs": "10.3.6",
+    "@storybook/react-vite": "^10.3.6",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3",
+    "storybook": "^10.3.6",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.11"
+  }
+}

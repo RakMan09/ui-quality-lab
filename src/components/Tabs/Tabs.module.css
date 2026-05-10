@@ -1,0 +1,42 @@
+.tabsRoot {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.tabList {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border-default);
+  padding-bottom: var(--space-2);
+}
+
+.tabButton {
+  border: 1px solid var(--color-border-default);
+  background: var(--color-bg-surface);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-pill);
+  min-height: 2.25rem;
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.tabButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.selected {
+  background: var(--color-brand-soft);
+  color: var(--color-text-primary);
+  border-color: var(--color-brand);
+}
+
+.panel {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  padding: var(--space-4);
+  color: var(--color-text-secondary);
+}

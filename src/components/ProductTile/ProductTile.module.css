@@ -1,0 +1,101 @@
+.tile {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-4);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+  padding: var(--space-4);
+}
+
+.imageWrap {
+  border-radius: var(--radius-md);
+  min-height: 130px;
+  background:
+    linear-gradient(135deg, rgba(72, 131, 255, 0.28), rgba(18, 187, 129, 0.26)),
+    var(--color-bg-surface-alt);
+  display: flex;
+  align-items: flex-start;
+  padding: var(--space-2);
+}
+
+.badge {
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  padding: 0.2rem var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+}
+
+.content {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.name {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: var(--line-tight);
+}
+
+.description {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.price {
+  font-size: var(--text-lg);
+}
+
+.originalPrice {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  font-size: var(--text-sm);
+}
+
+.skeletonImage,
+.skeletonLine,
+.skeletonLineShort {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--color-bg-surface-alt), var(--color-bg-elevated), var(--color-bg-surface-alt));
+  background-size: 200% 100%;
+  animation: pulse 1.2s infinite;
+}
+
+.skeletonImage {
+  min-height: 120px;
+}
+
+.skeletonLine {
+  height: 0.9rem;
+}
+
+.skeletonLineShort {
+  height: 0.9rem;
+  width: 65%;
+}
+
+.compact {
+  grid-template-columns: 1fr;
+}
+
+.compact .imageWrap {
+  min-height: 100px;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

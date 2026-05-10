@@ -1,0 +1,56 @@
+@import '../tokens/colors.css';
+@import '../tokens/spacing.css';
+@import '../tokens/radius.css';
+@import '../tokens/typography.css';
+
+:root {
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--line-regular);
+  background:
+    radial-gradient(circle at 90% 0%, rgba(60, 112, 237, 0.18), transparent 34%),
+    radial-gradient(circle at 0% 100%, rgba(11, 158, 106, 0.15), transparent 42%),
+    var(--color-bg-canvas);
+  color: var(--color-text-primary);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

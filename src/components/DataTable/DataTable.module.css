@@ -1,0 +1,95 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.caption {
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  padding: var(--space-4);
+  color: var(--color-text-primary);
+}
+
+th,
+td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-default);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+
+th {
+  color: var(--color-text-primary);
+  font-weight: var(--weight-semibold);
+  background: var(--color-bg-surface-alt);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.empty,
+.loadingPanel,
+.errorPanel {
+  margin: 0;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-surface);
+  padding: var(--space-4);
+  color: var(--color-text-secondary);
+}
+
+.errorPanel {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.mobileStacked .table {
+  border: none;
+  background: transparent;
+}
+
+@media (max-width: 700px) {
+  .mobileStacked thead {
+    display: none;
+  }
+
+  .mobileStacked tbody,
+  .mobileStacked tr,
+  .mobileStacked td {
+    display: block;
+    width: 100%;
+  }
+
+  .mobileStacked tr {
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+  }
+
+  .mobileStacked td {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  .mobileStacked td::before {
+    content: attr(data-label);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text-primary);
+  }
+
+  .mobileStacked tr td:last-child {
+    border-bottom: none;
+  }
+}
